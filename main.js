@@ -37,7 +37,7 @@ form.addEventListener("submit", async function (event) {
   event.preventDefault(); // stop page from reloading!
   const name = form.querySelector("#name").value;
   const age = form.querySelector("#age").value;
-  const createdUser = await createUser(name, age); // user with id
+  const createdUser = await createUser(name, Number(age)); // user with id
   // 1 TODO: populate list
   const ul = document.querySelector("#users");
   appendToList(ul, createdUser);

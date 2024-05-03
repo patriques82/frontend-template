@@ -10,8 +10,8 @@ so. :-)
 
 ### How to run
 
-- $ git clone <repo-url>
-- $ cd <repo>
+- $ git clone https://github.com/patriques82/frontend-template.git
+- $ cd frontend-template
 - $ npm install
 - $ npx json-server db.json (don´t close the terminal!)
 - open index.html in browser

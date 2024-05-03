@@ -15,6 +15,19 @@ async function createUser(name, age) {
   return createdUser;
 }
 
+async function getAllUsers() {
+  const response = await fetch("http://localhost:3000/users");
+  const users = await response.json();
+  return users;
+}
+
+function appendToList(ul, user) {
+  const li = document.createElement("li");
+  const text = document.createTextNode(`${user.id}: ${user.name}, ${user.age}`);
+  li.appendChild(text);
+  ul.appendChild(li);
+}
+
 // Retrieve form from DOM
 const form = document.querySelector("form");
 
@@ -26,7 +39,15 @@ form.addEventListener("submit", async function (event) {
   const age = form.querySelector("#age").value;
   const createdUser = await createUser(name, age); // user with id
   // 1 TODO: populate list
+  const ul = document.querySelector("#users");
+  appendToList(ul, createdUser);
 });
 
 // 2 TODO: when loading page we should retrieve all existing users
 // and display them in list
+async function populateListWithUsers() {
+  const users = await getAllUsers();
+  const ul = document.querySelector("#users");
+  users.forEach((user) => appendToList(ul, user));
+}
+populateListWithUsers();

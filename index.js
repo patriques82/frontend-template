@@ -22,9 +22,12 @@ async function getAllUsers() {
 }
 
 function appendToList(ul, user) {
-  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.setAttribute("href", `profile.html?id=${user.id}`);
   const text = document.createTextNode(`${user.id}: ${user.name}, ${user.age}`);
-  li.appendChild(text);
+  a.appendChild(text);
+  const li = document.createElement("li");
+  li.appendChild(a);
   ul.appendChild(li);
 }
 

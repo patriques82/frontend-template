@@ -23,8 +23,8 @@ async function getAllUsers() {
 
 function appendToList(ul, user) {
   const a = document.createElement("a");
-  a.setAttribute("href", `profile.html?id=${user.id}`);
-  const text = document.createTextNode(`${user.id}: ${user.name}, ${user.age}`);
+  a.setAttribute("href", `profile.html?id=${user.ID}`);
+  const text = document.createTextNode(`${user.ID}: ${user.Name}, ${user.Age}`);
   a.appendChild(text);
   const li = document.createElement("li");
   li.appendChild(a);
@@ -41,15 +41,14 @@ form.addEventListener("submit", async function (event) {
   const name = form.querySelector("#name").value;
   const age = form.querySelector("#age").value;
   const createdUser = await createUser(name, Number(age)); // user with id
-  // 1 TODO: populate list
-  const ul = document.querySelector("#users");
-  appendToList(ul, createdUser);
+  location.reload();
 });
 
 // 2 TODO: when loading page we should retrieve all existing users
 // and display them in list
 async function populateListWithUsers() {
   const users = await getAllUsers();
+  console.log(users);
   const ul = document.querySelector("#users");
   users.forEach((user) => appendToList(ul, user));
 }

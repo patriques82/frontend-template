@@ -12,7 +12,7 @@ async function createUser(name, age) {
     }),
   });
   const createdUser = await response.json();
-  return createdUser; // not used
+  return createdUser;
 }
 
 async function getAllUsers() {
@@ -40,8 +40,9 @@ form.addEventListener("submit", async function (event) {
   event.preventDefault(); // stop page from reloading!
   const name = form.querySelector("#name").value;
   const age = form.querySelector("#age").value;
-  await createUser(name, Number(age)); // user with id
-  location.reload();
+  const createdUser = await createUser(name, Number(age)); // user with id
+  const ul = document.querySelector("#users");
+  appendToList(ul, createdUser);
 });
 
 // 2 TODO: when loading page we should retrieve all existing users

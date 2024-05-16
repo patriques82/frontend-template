@@ -33,9 +33,7 @@ app.post("/users", async function (req, res) {
   const query = `INSERT INTO users (Name, Age) VALUES ('${newUser.name}', ${newUser.age})`;
   const [result] = await connection.query(query);
   if (result) {
-    res
-      .status(201)
-      .json({ id: result.insertId, name: newUser.name, age: newUser.age });
+    res.status(201).json({ message: "created user" });
   } else {
     res.status(500).json({ error: "Internal Server Error" });
   }

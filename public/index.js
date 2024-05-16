@@ -12,7 +12,7 @@ async function createUser(name, age) {
     }),
   });
   const createdUser = await response.json();
-  return createdUser;
+  return createdUser; // not used
 }
 
 async function getAllUsers() {
@@ -40,7 +40,7 @@ form.addEventListener("submit", async function (event) {
   event.preventDefault(); // stop page from reloading!
   const name = form.querySelector("#name").value;
   const age = form.querySelector("#age").value;
-  const createdUser = await createUser(name, Number(age)); // user with id
+  await createUser(name, Number(age)); // user with id
   location.reload();
 });
 
